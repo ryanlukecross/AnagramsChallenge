@@ -1,4 +1,4 @@
-package com.ryan.working.anagramschallenge.util;
+package com.ryan.working.anagramschallenge.service;
 
 import com.ryan.working.anagramschallenge.dto.AnagramRequest;
 import org.springframework.stereotype.Service;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 @Service
-public class AnagramUtil {
+public class AnagramService {
 
     public String isAnagram(AnagramRequest anagramRequest) {
         if (anagramRequest.getWordA().length() != anagramRequest.getWordB().length()) {

@@ -2,7 +2,7 @@ package com.ryan.working.anagramschallenge.controller;
 
 import com.ryan.working.anagramschallenge.dto.AnagramRequest;
 import com.ryan.working.anagramschallenge.dto.AnagramResponse;
-import com.ryan.working.anagramschallenge.util.AnagramUtil;
+import com.ryan.working.anagramschallenge.service.AnagramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class AnagramsChallengeController {
 
     @Autowired
-    AnagramUtil anagramUtil;
+    AnagramService anagramService;
 
     @GetMapping("/isAnagram")
     @ResponseBody
@@ -21,7 +21,7 @@ public class AnagramsChallengeController {
     @PostMapping("/isAnagram")
     @ResponseBody
     public AnagramResponse isAnagram(@RequestBody AnagramRequest anagramRequest) {
-        return new AnagramResponse(anagramUtil.isAnagram(anagramRequest));
+        return new AnagramResponse(anagramService.isAnagram(anagramRequest));
     }
 
 }
