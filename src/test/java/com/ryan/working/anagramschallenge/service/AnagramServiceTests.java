@@ -1,4 +1,4 @@
-package com.ryan.working.anagramschallenge.util;
+package com.ryan.working.anagramschallenge.service;
 
 import com.ryan.working.anagramschallenge.dto.AnagramRequest;
 import org.junit.jupiter.api.Test;
@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class AnagramUtilTests {
+public class AnagramServiceTests {
 
     @Autowired
-    AnagramUtil anagramUtil;
+    AnagramService anagramService;
 
 
     @Test
@@ -20,7 +20,7 @@ public class AnagramUtilTests {
         AnagramRequest success = new AnagramRequest("bored", "robed");
 
         // when
-        String isAnagram = anagramUtil.isAnagram(success);
+        String isAnagram = anagramService.isAnagram(success);
 
         // then
         assertEquals("true", isAnagram);
@@ -32,7 +32,7 @@ public class AnagramUtilTests {
         AnagramRequest failLength = new AnagramRequest("boredd", "robed");
 
         // when
-        String isAnagram = anagramUtil.isAnagram(failLength);
+        String isAnagram = anagramService.isAnagram(failLength);
 
         // then
         assertEquals("false", isAnagram);
@@ -44,7 +44,7 @@ public class AnagramUtilTests {
         AnagramRequest failLetter = new AnagramRequest("bored", "robeb");
 
         // when
-        String isAnagram = anagramUtil.isAnagram(failLetter);
+        String isAnagram = anagramService.isAnagram(failLetter);
 
         // then
         assertEquals("false", isAnagram);
