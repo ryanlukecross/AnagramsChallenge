@@ -28,33 +28,33 @@ public class AnagramsChallengeControllerTests {
 
         // when, then
         this.mockMvc.perform(requestBuilder).andDo(print())
-                .andExpect(content().string(containsString("please use a rest client to make a POST request to this endpoint containing the following object: {\"wordA\" : \"bored\", \"wordB\" : \"robed\"}")));
+                .andExpect(content().string(containsString("please use a rest client to make a POST request to this endpoint containing the following object: {" + '"' + "wordA" + '"' + " : " + '"' + "bored" + '"' + ", " + '"' + "robed" + '"' + " : " + '"' + "robed" + '"' + "}")));
 
     }
 
     @Test
     public void postRequestSuccessTest() throws Exception {
         // given
-        String contentString = "{\"wordA\" : \"bored\", \"wordB\" : \"robed\"}";
+        String contentString = "{" + '"' + "wordA" + '"' + " : " + '"' + "bored" + '"' + ", " + '"' + "wordB" + '"' + " : " + '"' + "robed" + '"' + "}";
         MockHttpServletRequestBuilder requestBuilder = post("/isAnagram").contentType(MediaType.APPLICATION_JSON).content(contentString).accept(MediaType.APPLICATION_JSON);
 
         // when, then
         this.mockMvc.perform(requestBuilder)
                 .andDo(print())
-                .andExpect(content().json("{\"result\":\"true\"}"));
+                .andExpect(content().json("{" + '"' + "result" + '"' + ":" + '"' + "true" + '"' + "}"));
 
     }
 
     @Test
     public void postRequestFailTest() throws Exception {
         // given
-        String contentString = "{\"wordA\" : \"bored\", \"wordB\" : \"robedd\"}";
+        String contentString = "{" + '"' + "wordA" + '"' + " : " + '"' + "bored" + '"' + ", " + '"' + "wordB" + '"' + " : " + '"' + "robedd" + '"' + "}";
         MockHttpServletRequestBuilder requestBuilder = post("/isAnagram").contentType(MediaType.APPLICATION_JSON).content(contentString).accept(MediaType.APPLICATION_JSON);
 
         // when, then
         this.mockMvc.perform(requestBuilder)
                 .andDo(print())
-                .andExpect(content().json("{\"result\":\"false\"}"));
+                .andExpect(content().json("{" + '"' + "result" + '"' + ":" + '"' + "false" + '"' + "}"));
 
     }
 
